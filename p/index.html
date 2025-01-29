@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        to Fullscreen Animation with Loading</title>
+    <style>
+        
+        .main {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: ivory;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        .page1{
+            margin: 0;
+            padding: 0;
+ height: 100vh;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background: #f0f0f0;
+ font-family: Arial, sans-serif;
+ overflow: hidden;
+        }
+
+        .animated-div {
+            width: 450px;
+            height: 90px;
+            background-color: #16101A;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: all 1s  ease-in-out;
+            font-size: 2.7vw;
+            position: absolute;
+        }
+
+        .animate {
+            width: 100vw;
+            height: 100vh;
+            border-radius:  0px ;
+        }
+        #h{
+            font-size: 5vw;
+        }
+
+    </style>
+</head>
+<body>
+<div class="main">
+ <div class="page1">
+    <marquee direction="right" scrollamount="5" behavior="alternate"><h1 id="h"> WELCOME TO OUR GET SET NOTES.....   WELCOME TO OUR GET SET NOTES.</h1></marquee>
+
+    
+ </div>   
+<div class="animated-div" id="animatedDiv">Loading 0%</div>
+</div>
+<script>
+    const animatedDiv = document.getElementById('animatedDiv');
+
+    let progress = 0;
+
+    // Automatically start loading and animation
+    const interval = setInterval(() => {
+        progress++;
+        animatedDiv.textContent = `Loading ${progress}%`;
+
+        if (progress >= 100) {
+            clearInterval(interval);
+            animatedDiv.textContent = 'Welcome';
+            setTimeout(() => {
+                animatedDiv.classList.add('animate');
+                animatedDiv.textContent = '';
+            }, 900); // Delay before expanding the button
+        }
+    }, 10); // Adjust speed of the loading animation here
+</script>
+
+</body>
+</html>
